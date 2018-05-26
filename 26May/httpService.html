@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<title>
+			Demonstrating $http service
+		</title>
+		<script type="text/javascript" src="../angular.js"></script>
+		<script type="text/javascript" src="app.js"></script>
+		<style type="text/css">
+			li {
+				list-style: none;
+				border: 1px solid;
+				background: #ccc;
+				margin: 5px;
+				padding: 10px;
+			}
+			.errBlock {
+				text-align: center;
+				color: red;
+				font-weight: bolder;
+				font-size: 20px;
+			}
+			ul {
+				border: 2px solid;
+				background: #fff;
+				width: 35 0px;
+				margin: 30px;
+				padding: 20px;
+
+			}
+			.loadingBlock img {
+				width: 150px;
+				height: 100px;
+				position: absolute;
+				left: 40%;
+				top: 20%;
+				
+			}
+		</style>
+	</head>
+	<body ng-app="httpApp" ng-controller="httpCntrl">
+		<div class="loadingBlock" ng-show="showLBlock">
+			<img src="images/loading.gif" />
+		</div>
+		<div class="errBlock" ng-show="shwErr">
+			Error while communicating to the server.
+		</div>
+		<input type="button" value="Get Data" ng-click="loadProdData($event)">
+		<div class="block" ng-repeat="pitem in prodDetails">
+			<ul>
+				{{$index + 1}}
+				<li>Product name: {{pitem.name}}</li>
+				<li>Product Price: {{pitem.price}}</li>
+				<li>Product Manufacturer: {{pitem.manufacturer}}</li>
+				<li>
+					<img src="{{pitem.image}}" />
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
